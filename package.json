@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start:client": "yarn workspace client dev"
+    "start:client": "yarn workspace client dev",
+    "start": "yarn workspace client start"
   }
 }
