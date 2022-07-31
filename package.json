@@ -9,6 +9,6 @@
   ],
   "scripts": {
     "start:client": "yarn workspace client dev",
-    "start": "yarn workspace client start"
+    "build:client": "yarn workspace client build"
   }
 }
