@@ -19,3 +19,16 @@
     font-family: "Kollektif", sans-serif;
   }
 }
+
+@import "./variables";
+
+html {
+  background-color: $beige;
+}
+
+.Hero {
+  background-image: url("/images/notans-bg.svg");
+  background-size: cover;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.hero-heading {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 76px;
+}
+
+.hero-sub-head {
+  font-size: 32px;
+  line-height: 38px;
+  margin-top: 8px;
+  color: rgba($color: $white, $alpha: .7);
+}
+
+.input-container {
+  margin-top: 28px;
+  min-width: 585px;
+  background-color: rgba(245, 245, 220, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  padding-left: 32px;
+}
+
+.username-input {
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+  line-height: 29px;
+  color: $white;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: rgba($color: $white, $alpha: .7);
+  }
+}
+
+.link-input {
+  font-size: 24px;
+  line-height: 29px;
+  color: $white;
+}

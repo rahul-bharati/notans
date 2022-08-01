@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.filled-button {
+  background-color: $white;
+  font-size: 24px;
+  line-height: 29px;
+  color: $orange;
+  padding: 14px 40px;
+  border-radius: 8px;
+}
