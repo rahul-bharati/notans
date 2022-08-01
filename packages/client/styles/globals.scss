@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Kollektif";
+    font-weight: 400;
+    src: url("/fonts/kollektif/Kollektif.ttf") format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Kollektif";
+    font-weight: 700;
+    src: url("/fonts/kollektif/Kollektif-Bold.ttf") format("truetype");
+  }
+
+  html {
+    font-family: "Kollektif", sans-serif;
+  }
+}
