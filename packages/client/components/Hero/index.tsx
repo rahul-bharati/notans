@@ -1,11 +1,13 @@
 import { NextComponentType } from "next";
 import styles from "./index.module.scss";
 import FilledButton from "./../Button/FilledButton";
+import Navbar from "../Navbar";
 
 const Hero: NextComponentType = () => {
   return (
     <div className="Hero min-h-[100vh]">
-      <div className="container-fluid h-full min-h-[70vh] flex items-center justify-center">
+      <Navbar />
+      <div className="container-fluid h-full min-h-[60vh] flex items-center justify-center">
         <div className="hero-container max-w-[970px] flex flex-col items-center h-4/5">
           <h2 className={`${styles["hero-heading"]} text-white text-center`}>
             No More Copying and Pasting of Long Adresses
