@@ -1,0 +1,24 @@
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #F9FAFB;
+  border: 1.1682px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 14px 18px;
+}
+
+.input {
+  background: none;
+  font-size: 24px;
+  line-height: 150%;
+  margin-left: 18px;
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  color: #A1A8B0;
+}
+
+.input-logo {
+  height: 28px;
+  width: 28px;
+}

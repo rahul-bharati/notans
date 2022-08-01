@@ -28,3 +28,22 @@
   background-position: bottom left;
   background-repeat: no-repeat;
 }
+
+.heading__primary {
+  font-size: 40px;
+  line-height: 48px;
+  color: #030225;
+}
+
+.mt-large {
+  margin-top: 124px;
+}
+
+.auth-container {
+  max-width: 512px;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
