@@ -10,8 +10,15 @@
 .navbar-brand {
   font-size: 42.367px;
   line-height: 51px;
-  color: $white;
   margin-left: 10px;
+}
+
+.navbar-brand-white {
+  color: $white;
+}
+
+.navbar-brand-blue {
+  color: $navy-blue;
 }
 
 .navbar-list {
