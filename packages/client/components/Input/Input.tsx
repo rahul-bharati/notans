@@ -11,7 +11,7 @@ const Input = ({
 }: {
   placeholder: string;
   type: string;
-  icon: any;
+  icon?: any;
 }) => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -28,9 +28,11 @@ const Input = ({
 
   return (
     <div className={styles["input-container"]}>
-      <span className={styles["input-logo"]}>
-        <Image src={icon} alt={type} height={28} width={28} />
-      </span>
+      {icon && (
+        <span className={styles["input-logo"]}>
+          <Image src={icon} alt={type} height={28} width={28} />
+        </span>
+      )}
       <input
         type={inputType}
         placeholder={placeholder}
