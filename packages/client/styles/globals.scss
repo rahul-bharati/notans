@@ -121,3 +121,41 @@ body {
 .social-icons-container {
   margin-top: 36px;
 }
+
+.pay-container {
+  background: rgb(3, 2, 37);
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 2, 37, 1) 35%,
+    rgba(255, 255, 255, 1) 35%
+  );
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .image-container {
+    height: 166px;
+    width: 166px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid $white;
+  }
+
+  .profile-name {
+    font-size: 40px;
+    line-height: 40px;
+    color: #000000;
+    margin-top: 16px;
+  }
+
+  .profile-username {
+    font-size: 20px;
+    line-height: 20px;
+    color: #a1a8b0;
+    margin-bottom: 50px;
+  }
+}
