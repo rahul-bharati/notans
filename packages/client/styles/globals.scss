@@ -8,7 +8,7 @@
     font-weight: 400;
     src: url("/fonts/kollektif/Kollektif.ttf") format("truetype");
   }
-  
+
   @font-face {
     font-family: "Kollektif";
     font-weight: 700;
@@ -22,11 +22,17 @@
 
 @import "./variables";
 
-.Hero {
-  background-image: url("/images/notans-bg.svg");
-  background-size: cover;
-  background-position: bottom left;
-  background-repeat: no-repeat;
+body {
+  // background-image: url("/images/notans-bg.svg");
+  background: rgb(255, 142, 60);
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 142, 60, 1) 0%,
+    rgba(183, 77, 1, 1) 70%,
+    rgba(153, 68, 7, 1) 70%,
+    rgba(153, 68, 7, 1) 77%,
+    rgba(125, 57, 7, 1) 77%
+  );
 }
 
 .heading__primary {

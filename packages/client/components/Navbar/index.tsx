@@ -18,18 +18,9 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <Link href="/" passHref>
           <a className="flex items-center">
-            <Image
-              src={isHome ? NotansLogoWhite : NotansLogoGradient}
-              alt="Notans"
-              height={60}
-              width={54}
-            />
+            <Image src={NotansLogoWhite} alt="Notans" height={60} width={54} />
             <span
-              className={`${styles["navbar-brand"]} ${
-                isHome
-                  ? styles["navbar-brand-white"]
-                  : styles["navbar-brand-blue"]
-              }`}
+              className={`${styles["navbar-brand"]} ${styles["navbar-brand-white"]}`}
             >
               Notans
             </span>
@@ -50,12 +41,12 @@ const Navbar = () => {
           )}
           {asPath === "/login" && (
             <li>
-              <OutlineButton title="Sign Up" />
+              <FilledButton title="Sign Up" />
             </li>
           )}
           {asPath === "/sign-up" && (
             <li>
-              <OutlineButton title="Login" />
+              <FilledButton title="Login" />
             </li>
           )}
         </ul>
