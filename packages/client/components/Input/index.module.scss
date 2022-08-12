@@ -1,10 +1,14 @@
 .input-container {
   display: flex;
   align-items: center;
-  background-color: #F9FAFB;
-  border: 1.1682px solid #E5E7EB;
+  background-color: #f9fafb;
+  border: 1.1682px solid #e5e7eb;
   border-radius: 8px;
   padding: 14px 18px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 10px 12px;
+  }
 }
 
 .input {
@@ -15,10 +19,20 @@
   flex-grow: 1;
   outline: none;
   border: none;
-  color: #A1A8B0;
+  color: #a1a8b0;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 30px;
+  }
 }
 
 .input-logo {
   height: 28px;
   width: 28px;
+
+  @media only screen and (min-width: 768px) {
+    height: 20px;
+    width: 20px;
+  }
 }
