@@ -45,3 +45,29 @@
     padding: 10px 32px;
   }
 }
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $white;
+  color: rgba($color: $navy-blue, $alpha: 0.8);
+  background: #ffffff;
+  border: 1px solid #eaecef;
+  border-radius: 8px;
+  padding: 16px;
+
+  .icon-container {
+    font-size: 20px;
+  }
+
+  .text-container {
+    flex-grow: 1;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: rgba(16, 22, 35, 0.8);
+  }
+}
