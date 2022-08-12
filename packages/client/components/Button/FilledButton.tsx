@@ -1,6 +1,15 @@
+import { MouseEventHandler } from "react";
 import styles from "./index.module.scss";
 
-const FilledButton = ({ title, type }: { title: string; type?: string }) => {
+const FilledButton = ({
+  title,
+  type,
+  onClick,
+}: {
+  title: string;
+  type?: string;
+  onClick?: MouseEventHandler;
+}) => {
   return (
     <button
       className={
@@ -8,6 +17,7 @@ const FilledButton = ({ title, type }: { title: string; type?: string }) => {
           ? `${styles["filled-button-full"]}`
           : `${styles["filled-button"]}`
       }
+      onClick={onClick}
     >
       {title}
     </button>

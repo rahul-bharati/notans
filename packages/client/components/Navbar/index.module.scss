@@ -5,12 +5,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 44px;
+  }
 }
 
 .navbar-brand {
   font-size: 42.367px;
   line-height: 51px;
   margin-left: 10px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 32px;
+  }
 }
 
 .navbar-brand-white {
@@ -24,6 +32,10 @@
 .navbar-list {
   li:not(:last-child) {
     margin-right: 64px;
+
+    @media only screen and (min-width: 768px) {
+      margin-right: 54px;
+    }
   }
 }
 
@@ -32,4 +44,9 @@
   line-height: 29px;
   text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   color: $white;
+
+  @media only screen and (min-width: 768px) {
+    margin-right: 18px;
+    line-height: 24px;
+  }
 }

@@ -7,6 +7,12 @@
   color: $orange;
   padding: 14px 40px;
   border-radius: 8px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 32px;
+  }
 }
 
 .filled-button-full {
@@ -16,6 +22,12 @@
   color: $white;
   padding: 14px 40px;
   border-radius: 8px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 32px;
+  }
 }
 
 .outline-button {
@@ -26,4 +38,10 @@
   padding: 14px 40px;
   border-radius: 8px;
   border: 2px solid $navy-blue;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 10px 32px;
+  }
 }

@@ -4,13 +4,23 @@
   font-weight: 700;
   font-size: 64px;
   line-height: 76px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 44px;
+    line-height: 52px;
+  }
 }
 
 .hero-sub-head {
   font-size: 32px;
   line-height: 38px;
   margin-top: 8px;
-  color: rgba($color: $white, $alpha: .7);
+  color: rgba($color: $white, $alpha: 0.7);
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
+    line-height: 28px;
+  }
 }
 
 .input-container {
@@ -23,6 +33,11 @@
   justify-content: center;
   padding: 4px;
   padding-left: 32px;
+
+  @media only screen and (min-width: 768px) {
+    min-width: 480px;
+    padding-left: 24px;
+  }
 }
 
 .username-input {
@@ -36,7 +51,12 @@
   outline: none;
 
   &::placeholder {
-    color: rgba($color: $white, $alpha: .7);
+    color: rgba($color: $white, $alpha: 0.7);
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 
@@ -44,4 +64,9 @@
   font-size: 24px;
   line-height: 29px;
   color: $white;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }

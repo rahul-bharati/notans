@@ -5,10 +5,9 @@ import Navbar from "../Navbar";
 
 const Hero: NextComponentType = () => {
   return (
-    <div className="Hero min-h-[100vh]">
-      <Navbar />
+    <div className="Hero">
       <div className="container-fluid h-full min-h-[60vh] flex items-center justify-center">
-        <div className="hero-container max-w-[970px] flex flex-col items-center h-4/5">
+        <div className="hero-container md:max-w-[680px] lg:max-w-[970px] flex flex-col items-center h-4/5">
           <h2 className={`${styles["hero-heading"]} text-white text-center`}>
             No More Copying and Pasting of Long Adresses
           </h2>
