@@ -2,10 +2,19 @@ import Image from "next/image";
 import styles from "./index.module.scss";
 
 import ProfileImage from "../../images/default-profile.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const ImageInput = () => {
+const ImageInput = ({
+  isEdit = false,
+  value,
+}: {
+  isEdit?: boolean;
+  value?: any;
+}) => {
   const [imageUrl, setImageUrl] = useState<undefined | any>(undefined);
+  useEffect(() => {
+    if (isEdit && value) setImageUrl(value);
+  }, []);
   const handleOnChange = (e: any) => {
     if (e.target?.files && e.target?.files.length > 0) {
       setImageUrl(URL.createObjectURL(e.target?.files[0]));
@@ -25,7 +34,9 @@ const ImageInput = () => {
           objectFit="cover"
         />
       </div>
-      <div className={`${styles["image-input-text"]}`}>Add photo</div>
+      <div className={`${styles["image-input-text"]}`}>
+        {isEdit ? "Change Photo" : "Add photo"}
+      </div>
       <input
         type="file"
         accept="image/*"
