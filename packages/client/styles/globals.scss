@@ -157,5 +157,26 @@ body {
     line-height: 20px;
     color: #a1a8b0;
     margin-bottom: 50px;
+
+    &.profile-mb-small {
+      margin-bottom: 35px;
+    }
+  }
+}
+
+.input-container {
+  .title-text {
+    font-size: 24px;
+    line-height: 150%;
+    /* identical to box height, or 36px */
+    color: #a1a8b0;
+    text-align: center;
+  }
+  .text-wallet-address {
+    font-size: 24px;
+    line-height: 150%;
+    color: #030225;
+    text-align: center;
+    margin-bottom: 16px;
   }
 }
