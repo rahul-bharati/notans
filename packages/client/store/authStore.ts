@@ -18,6 +18,14 @@ export const authSlice = createSlice({
       state.authState = action.payload;
     },
   },
+  extraReducers: {
+    [HYDRATE]: (state, action) => {
+      return {
+        ...state,
+        ...action.payload.auth,
+      };
+    },
+  },
 });
 
 export const { setAuthState } = authSlice.actions;
