@@ -2,16 +2,20 @@ import Image from "next/image";
 
 import styles from "./index.module.scss";
 import ShowPasswordLogo from "../../images/show-password.svg";
-import { useEffect, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 
 const Input = ({
   placeholder,
   type,
   icon,
+  value,
+  onChange,
 }: {
   placeholder: string;
   type: string;
   icon?: any;
+  value?: string;
+  onChange?: ChangeEventHandler;
 }) => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -37,6 +41,8 @@ const Input = ({
         type={inputType}
         placeholder={placeholder}
         className={styles["input"]}
+        value={value}
+        onChange={onChange}
       />
       <span
         className={`${styles["input-logo"]} ${type !== "password" && "hidden"}`}
