@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-// Import this file to use console.log
-import "hardhat/console.sol";
-
 contract Notans {
     struct Userdata {
         string username;
@@ -11,6 +8,8 @@ contract Notans {
         string profile_uri;
     }
     mapping(string => Userdata) usermapping;
+
+    constructor () {}
 
     event UserdataSaved(
         string indexed username,

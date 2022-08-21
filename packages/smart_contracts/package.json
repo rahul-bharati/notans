@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "dotenv": "^16.0.1",
-    "glob": "^8.0.3"
+    "glob": "7.2.0"
   }
 }
