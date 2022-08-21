@@ -13,6 +13,9 @@ export const getErrorMessage = (errorCode: string): string => {
     case "auth/operation-not-allowed":
       message = "This operation is allowed at this moment";
       break;
+    case "auth/wrong-password":
+      message = "Invalid Credentials";
+      break;
     default:
       message = "";
       break;

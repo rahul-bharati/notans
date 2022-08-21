@@ -9,7 +9,7 @@ import FilledButton from "../components/Button/FilledButton";
 import SocialButton from "../components/Button/SocialButton";
 
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { validateEmail } from "./../utils/index";
 import Loader from "../components/Loader";
 import { signUp } from "./../services/firebase";
@@ -18,8 +18,11 @@ import { useDispatch } from "react-redux";
 import { setUserState } from "../store/userStore";
 import { useRouter } from "next/router";
 import { setAuthState } from "../store/authStore";
+import { UtilContext } from "../context/UtilContext";
 
 const SignUp: NextPage = () => {
+  const { storeAuth } = useContext(UtilContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -62,6 +65,7 @@ const SignUp: NextPage = () => {
         const user = await signUp(email, password);
         dispatch(setUserState({ email: user.email, uid: user.uid }));
         dispatch(setAuthState(true));
+        storeAuth(await user.getIdToken());
         router.push("/dashboard");
       }
     } catch (error: any) {
