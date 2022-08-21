@@ -9,6 +9,10 @@
   ],
   "scripts": {
     "start:client": "yarn workspace client dev",
-    "build:client": "yarn workspace client build"
+    "build:client": "yarn workspace client build",
+    "start-node": "yarn workspace smart_contracts start-node",
+    "compile": "yarn workspace smart_contracts compile",
+    "deploy": "yarn workspace smart_contracts deploy",
+    "deploy-mumbai": "yarn workspace smart_contracts deploy-mumbai"
   }
 }
