@@ -11,8 +11,9 @@
     "start:client": "yarn workspace client dev",
     "build:client": "yarn workspace client build",
     "start-node": "yarn workspace smart_contracts start-node",
-    "compile": "yarn workspace smart_contracts compile",
+    "compile": "yarn workspace smart_contracts compile && yarn copy-abi",
     "deploy": "yarn workspace smart_contracts deploy",
-    "deploy-mumbai": "yarn workspace smart_contracts deploy-mumbai"
+    "deploy-mumbai": "yarn workspace smart_contracts deploy-mumbai",
+    "copy-abi": "cp packages/smart_contracts/artifacts/contracts/Notans.sol/Notans.json packages/client/abi"
   }
 }

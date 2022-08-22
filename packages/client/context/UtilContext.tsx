@@ -18,12 +18,14 @@ interface IUtilContext {
   connectWallet: Function;
   storeAuth: Function;
   getAuth: Function;
+  removeAuth: Function;
 }
 
 export const UtilContext = createContext<IUtilContext>({
   connectWallet: () => {},
   storeAuth: () => {},
   getAuth: () => {},
+  removeAuth: () => {},
 });
 
 export const UtilContextProvider = ({ children }: Props) => {
@@ -36,11 +38,21 @@ export const UtilContextProvider = ({ children }: Props) => {
 
   const connectWallet = () => {};
   const storeAuth = (token: string) => {
-    localStorage.setItem("token", token);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("token", token);
+    }
   };
 
   const getAuth = () => {
-    return localStorage.getItem("token");
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
+    }
+  };
+
+  const removeAuth = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+    }
   };
 
   useEffect(() => {
@@ -59,7 +71,9 @@ export const UtilContextProvider = ({ children }: Props) => {
   }, [asPath, router, authState]);
 
   return (
-    <UtilContext.Provider value={{ connectWallet, storeAuth, getAuth }}>
+    <UtilContext.Provider
+      value={{ connectWallet, storeAuth, getAuth, removeAuth }}
+    >
       {children}
     </UtilContext.Provider>
   );

@@ -17,7 +17,7 @@ import FilledButton from "./../components/Button/FilledButton";
 import SocialButton from "./../components/Button/SocialButton";
 
 import { FcGoogle } from "react-icons/fc";
-import { signIn } from "../services/firebase";
+import { checkIfUserExists, signIn } from "../services/firebase";
 import Loader from "../components/Loader";
 
 const Login: NextPage = () => {
@@ -66,7 +66,12 @@ const Login: NextPage = () => {
         dispatch(setUserState({ email: user.email, uid: user.uid }));
         dispatch(setAuthState(true));
         storeAuth(await user.getIdToken());
-        router.push("/dashboard");
+        const doesUserExists = await checkIfUserExists(user.uid);
+        if (doesUserExists) {
+          router.push("/dashboard");
+        } else {
+          router.push("/create");
+        }
       }
     } catch (error: any) {
       const errorCode = error.code;

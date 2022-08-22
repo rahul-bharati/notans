@@ -8,11 +8,19 @@ import NotansLogoWhite from "../../images/notans-logo-white.png";
 import NotansLogoGradient from "../../images/notans-logo-gradient.png";
 import FilledButton from "../Button/FilledButton";
 import OutlineButton from "./../Button/OutlineButton";
+import { useContext } from "react";
+import { UtilContext } from "../../context/UtilContext";
+import { useDispatch } from "react-redux";
+import { setUserState } from "../../store/userStore";
+import { setAuthState } from "../../store/authStore";
 
 const Navbar = () => {
+  const { getAuth, removeAuth } = useContext(UtilContext);
+  const dispatch = useDispatch();
   const router = useRouter();
   const { asPath } = router;
   const isHome = asPath === "/";
+  const isAuthenticated = getAuth();
 
   const goToLogin = () => {
     router.push("/login");
@@ -20,6 +28,13 @@ const Navbar = () => {
 
   const goToSignup = () => {
     router.push("/sign-up");
+  };
+
+  const handleLogout = () => {
+    removeAuth();
+    dispatch(setUserState({ email: "", uid: "" }));
+    dispatch(setAuthState(true));
+    router.push("/login");
   };
 
   return (
@@ -36,7 +51,7 @@ const Navbar = () => {
           </a>
         </Link>
         <ul className={`list-none flex items-center ${styles["navbar-list"]}`}>
-          {isHome && (
+          {isHome && isAuthenticated && (
             <>
               <li>
                 <Link href="/login" passHref>
@@ -48,14 +63,20 @@ const Navbar = () => {
               </li>
             </>
           )}
-          {asPath === "/login" && (
+          {asPath === "/login" && !isAuthenticated && (
             <li>
               <FilledButton title="Sign Up" onClick={goToSignup} />
             </li>
           )}
-          {asPath === "/sign-up" && (
+          {asPath === "/sign-up" && !isAuthenticated && (
             <li>
               <FilledButton title="Login" onClick={goToLogin} />
+            </li>
+          )}
+
+          {isAuthenticated && (
+            <li>
+              <FilledButton title="Log out" onClick={handleLogout} />
             </li>
           )}
         </ul>
