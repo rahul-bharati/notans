@@ -55,7 +55,7 @@ const Navbar = () => {
           </a>
         </Link>
         <ul className={`list-none flex items-center ${styles["navbar-list"]}`}>
-          {isHome && isAuthenticated && (
+          {isHome && !isAuthenticated && (
             <>
               <li>
                 <Link href="/login" passHref>

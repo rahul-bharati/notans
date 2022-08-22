@@ -7,8 +7,9 @@ export const validateEmail = (email: string) => {
 };
 
 export const validateUsername = (username: string) => {
-  return username
-    .match(
-      /^[a-zA-Z0-9]+$/
-    );
+  return username.match(/^[a-zA-Z0-9]+$/);
+};
+
+export const validateAmount = (username: string) => {
+  return username.match(/^[0-9]+$/);
 };

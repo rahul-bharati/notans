@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
 contract Notans {
     struct Userdata {
         string name;
@@ -8,9 +10,8 @@ contract Notans {
         address payable recipient_address;
         string profile_uri;
     }
-    mapping(string => Userdata) usermapping;
-
-    constructor() {}
+    mapping(string => Userdata) public usermapping;
+    mapping(bytes32 => address) public tokens;
 
     event UserdataSaved(
         string name,
@@ -40,5 +41,18 @@ contract Notans {
         returns (Userdata memory)
     {
         return usermapping[_username];
+    }
+
+    function addToken(bytes32 symbol, address tokenAddress) external {
+        tokens[symbol] = tokenAddress;
+    }
+
+    function send_token(
+        bytes32 symbol,
+        uint amount,
+        address _to
+    ) external {
+        ERC20(tokens[symbol]).approve(msg.sender, amount);
+        ERC20(tokens[symbol]).transfer(_to, amount);
     }
 }

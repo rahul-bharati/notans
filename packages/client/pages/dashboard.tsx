@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import FilledButton from "../components/Button/FilledButton";
-import Input from "../components/Input/Input";
 import Loader from "../components/Loader";
 import { UtilContext } from "../context/UtilContext";
 
-import defaultProfile from "../images/default-profile.jpg";
 import { fetchRecord } from "../services/firebase";
 import { shortenAddress } from "../utils/shortenAddress";
 
@@ -30,6 +28,7 @@ const Dashboard = () => {
       setProfileUri(contractUser.profile_uri);
       setName(contractUser.name);
     } catch (error) {
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -43,10 +42,16 @@ const Dashboard = () => {
   }, [getAuth]);
 
   useEffect(() => {
-    if (user?.uid) {
+    if (user?.uid && walletAddress) {
       fetchUserdata();
     }
-  }, [user]);
+  }, [user, walletAddress]);
+
+  useEffect(() => {
+    if (!walletAddress) {
+      connectWallet();
+    }
+  }, [walletAddress, connectWallet]);
 
   return (
     <>
@@ -58,7 +63,7 @@ const Dashboard = () => {
               <div className="profile-container">
                 <div className="image-container">
                   <Image
-                    src={`/api/imageproxy?url=${profileUri}`}
+                    src={`https://res.cloudinary.com/demo/image/fetch/${profileUri}`}
                     height={166}
                     width={166}
                     objectFit="cover"
