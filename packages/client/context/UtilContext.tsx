@@ -26,6 +26,11 @@ interface IUtilContext {
   storeAuth: Function;
   getAuth: Function;
   removeAuth: Function;
+  isWalletConnected: boolean;
+  walletAddress: string;
+  storageClient: Web3Storage | null;
+  getNotansContract: Function;
+  isStorageClientValid: Function;
 }
 
 export const UtilContext = createContext<IUtilContext>({
@@ -33,14 +38,18 @@ export const UtilContext = createContext<IUtilContext>({
   storeAuth: () => {},
   getAuth: () => {},
   removeAuth: () => {},
+  isWalletConnected: false,
+  walletAddress: "",
+  storageClient: null,
+  getNotansContract: () => {},
+  isStorageClientValid: () => {},
 });
 
 export const UtilContextProvider = ({ children }: Props) => {
-  const [walletConnected, setWalletConnected] = useState(false);
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState("");
 
   const storageClient = new Web3Storage({ token: Web3torage_token } as Service);
-  const dispath = useDispatch();
 
   const isStorageClientValid = async () => {
     try {
@@ -70,49 +79,40 @@ export const UtilContextProvider = ({ children }: Props) => {
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
-      setWalletConnected(true);
+      setIsWalletConnected(true);
     } catch (error) {
       console.log(error);
       setCurrentAccount("");
-      setWalletConnected(false);
+      setIsWalletConnected(false);
     }
   };
 
   useEffect(() => {
     if (typeof window.ethereum) {
       window.ethereum.on("disconnect", () => {
-        setWalletConnected(false);
+        setIsWalletConnected(false);
         setCurrentAccount("");
       });
     }
   }, []);
 
-  const storeAuth = (token: string) => {
+  const storeAuth = (userdata: string) => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("token", token);
+      localStorage.setItem("notan_user", JSON.stringify(userdata));
     }
   };
 
   const getAuth = () => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("token");
+      return localStorage.getItem("notan_user");
     }
   };
 
   const removeAuth = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("token");
+      localStorage.removeItem("notan_user");
     }
   };
-
-  useEffect(() => {
-    const token = getAuth();
-    if (token) {
-      dispath(setAuthState(true));
-    } else {
-      dispath(setAuthState(false));
-    }
-  }, [dispath]);
 
   useEffect(() => {
     if (ProtectedRoutes.includes(asPath) && !getAuth()) {
@@ -133,7 +133,17 @@ export const UtilContextProvider = ({ children }: Props) => {
 
   return (
     <UtilContext.Provider
-      value={{ connectWallet, storeAuth, getAuth, removeAuth }}
+      value={{
+        connectWallet,
+        storeAuth,
+        getAuth,
+        removeAuth,
+        isWalletConnected,
+        walletAddress: currentAccount,
+        getNotansContract,
+        isStorageClientValid,
+        storageClient,
+      }}
     >
       {children}
     </UtilContext.Provider>
