@@ -10,12 +10,14 @@ const Input = ({
   icon,
   value,
   onChange,
+  disabled = false,
 }: {
   placeholder: string;
   type: string;
   icon?: any;
   value?: string;
   onChange?: ChangeEventHandler;
+  disabled?: boolean;
 }) => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -43,6 +45,7 @@ const Input = ({
         className={styles["input"]}
         value={value}
         onChange={onChange}
+        disabled={disabled}
       />
       <span
         className={`${styles["input-logo"]} ${type !== "password" && "hidden"}`}

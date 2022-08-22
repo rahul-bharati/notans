@@ -32,8 +32,6 @@ const Login: NextPage = () => {
 
   const router = useRouter();
 
-  const dispatch = useDispatch();
-
   const validateForm = () => {
     const errors = [];
     if (!validateEmail(email)) {
@@ -63,9 +61,7 @@ const Login: NextPage = () => {
     try {
       if (isValid) {
         const user = await signIn(email, password);
-        dispatch(setUserState({ email: user.email, uid: user.uid }));
-        dispatch(setAuthState(true));
-        storeAuth(await user.getIdToken());
+        storeAuth(user);
         const doesUserExists = await checkIfUserExists(user.uid);
         if (doesUserExists) {
           router.push("/dashboard");

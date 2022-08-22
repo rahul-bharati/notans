@@ -8,7 +8,7 @@ import NotansLogoWhite from "../../images/notans-logo-white.png";
 import NotansLogoGradient from "../../images/notans-logo-gradient.png";
 import FilledButton from "../Button/FilledButton";
 import OutlineButton from "./../Button/OutlineButton";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UtilContext } from "../../context/UtilContext";
 import { useDispatch } from "react-redux";
 import { setUserState } from "../../store/userStore";
@@ -20,7 +20,11 @@ const Navbar = () => {
   const router = useRouter();
   const { asPath } = router;
   const isHome = asPath === "/";
-  const isAuthenticated = getAuth();
+  const [isAuthenticated, setIsAuthenticated] = useState("");
+
+  useEffect(() => {
+    setIsAuthenticated(getAuth());
+  }, [getAuth]);
 
   const goToLogin = () => {
     router.push("/login");

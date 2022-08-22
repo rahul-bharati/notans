@@ -63,9 +63,7 @@ const SignUp: NextPage = () => {
     try {
       if (isValid) {
         const user = await signUp(email, password);
-        dispatch(setUserState({ email: user.email, uid: user.uid }));
-        dispatch(setAuthState(true));
-        storeAuth(await user.getIdToken());
+        storeAuth(user);
         router.push("/dashboard");
       }
     } catch (error: any) {
