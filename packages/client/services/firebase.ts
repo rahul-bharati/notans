@@ -31,3 +31,12 @@ export const createRecord = async (userid: string, username: string, name: strin
   const userRef = collection(db, "users");
   await setDoc(doc(userRef, userid), {username, userid, name})
 }
+
+export const fetchRecord = async (userid: string) => {
+  const docRef = doc(db, "users", userid);
+  const docSnap = await getDoc(docRef);
+  if(docSnap.exists()) {
+    return docSnap.data()
+  }
+  return null
+}

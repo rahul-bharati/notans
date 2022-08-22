@@ -52,8 +52,6 @@ const Create: NextPage = () => {
     const checkuser = async () => {
       if (user && user.uid) {
         const userRegistered = await checkIfUserIsRegistered(user.uid);
-        console.log({ userRegistered });
-
         if (userRegistered) {
           router.push("/dashboard");
         }
